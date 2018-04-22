@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Гостиница">
+    <meta name="author" content="Кузьмин Дмитрий Викторович"/>
+    <title>Вход</title>
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!--<link href="{% static "bootstrap/css/bootstrap-theme.min.css" %}" rel="stylesheet">-->
+    <link href="{% static "css/signin.css" %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+         <div class="col-md-6">
+            <h3 class="form-signin-heading text-center">Система управления номерным фондом</h3>
+         </div>
+      </div>
+
+
+<form class="form-signin" action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    
+    <div class="control-label">
+        <span class="label label-danger text-danger">{{ message }}</span>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="username" name="username" placeholder="Логин" type="text" required autofocus/>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="pwd" name="pwd" placeholder="Пароль" type="password" required/>
+    </div>
+    <div class="form-group">
+        <div>
+            <button class="btn btn-primary" name="submit" type="submit">Войти</button>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

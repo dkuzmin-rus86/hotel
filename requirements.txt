@@ -1,0 +1,9 @@
+Django==2.0.4
+django-historicalrecords==1.1
+django-simple-history==2.0
+gunicorn==19.7.1
+psycopg2==2.7.4
+psycopg2-binary==2.7.4
+python-slugify==1.2.5
+pytz==2018.3
+Unidecode==1.0.22

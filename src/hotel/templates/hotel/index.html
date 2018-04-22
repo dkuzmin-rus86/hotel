@@ -1,0 +1,62 @@
+{% extends 'hotel/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content_title %}
+    <!--Объекты размещения-->
+{% endblock %}
+
+{% block content %}
+	
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item active" aria-current="page">Объекты размещения</li>
+	  </ol>
+	</nav>
+
+
+
+
+
+{% for region in regions %}
+<ul>
+<li>
+	<h3>{{ region.name }}</h3>
+</li>	
+		{% for filial in filials %}
+			<ul>
+
+			{% if filial.region == region %}
+				<li>
+				<h5>{{ filial.name }}</h5>
+				</li>
+				{% for hotel in hotels %}
+					<ul>
+					{% if hotel.filial == filial %}
+						<li>
+							<div><a href="{% url 'hotel' hotel.slug%}">{{ hotel.name }}</a></div>
+						</li>
+					{% endif %}
+					</ul>
+				{% endfor %}
+
+
+			{% endif %}
+			</ul>
+		{% endfor %}
+</ul>		
+{% endfor %}
+
+
+
+
+{% endblock %}
+
+
+
+

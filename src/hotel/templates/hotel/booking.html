@@ -1,0 +1,38 @@
+{% extends 'hotel/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Бронирование{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content_title %}
+{% endblock %}
+
+{% block content %}
+	
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{% url 'index' %}">Объекты размещения</a></li>
+		<li class="breadcrumb-item"><a href="{% url 'hotel' hotel.slug %}">{{ hotel.name }}</a></li>
+    	<li class="breadcrumb-item active" aria-current="page">Бронирование</li>
+	  </ol>
+	</nav>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+
+		<div class="col-md-6">
+	        <form action="{% url 'booking' hotel.slug %}" method="POST">
+	            {% csrf_token%}
+	            {{ form.as_p }}
+	            <div>
+	                <button type="submit" class="btn btn-primary">Забронировать номер</button>
+	            </div>
+	        </form>
+	    </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'hotel/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Объект размещения{% endblock %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content_title %}
+    <!--Объекты размещения-->
+{% endblock %}
+
+{% block content %}
+
+
+	
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{% url 'index' %}">Объекты размещения</a></li>
+		<li class="breadcrumb-item active" aria-current="page">{{ hotel.filial.name }}</li>
+    	<li class="breadcrumb-item active" aria-current="page">{{ hotel.name }}</li>
+	  </ol>
+	</nav>
+
+
+
+    <div class="row ">
+		<div class="col-md-6">
+
+			<h3>{{ hotel.name}}</h3>
+			
+		</div>
+	</div>
+
+	
+
+<div class="row">
+	<div class="col-md-6">
+		<table class="table">
+		  <tbody>
+			    <tr>
+			      <td>Филиал</td>
+			      <td>{{ hotel.filial.name }}</td>
+			    </tr>
+			    <tr>
+			      <td>Ответственный</td>
+			      <td>{{ hotel.manager}}</td>
+			    </tr>
+			  	<tr>
+			      <td>Телефон</td>
+			      <td>{{ hotel.phone}}</td>
+			    </tr>
+		  </tbody>
+		</table>
+
+	</div>
+</div>
+
+
+<div>
+<h5>Год: {{ year }}</h5>
+<h5>Месяц: {{ month }}</h5>
+</div>
+
+	<div class="row">
+	
+
+
+
+		<table class="table table-bordered">
+		  <tbody>
+		  	<tr>
+		      	<th>Комната</th>
+		      	<th>Категория</th>
+      			{% for dt in date_list %}	
+      				<th>{{ dt|date:"d" }}</th>
+      			{% endfor %}
+		    </tr>
+			{% for room in allroom %}		    
+			    <tr>
+			      <td>{{ room.room_number}}</td>
+			      <td>{{ room.category_room}}</td>
+			      
+			      {% for status in room.status %}  
+			      	<td 
+					{% if status.s == 0 %} bgcolor='#d4edda'{% endif %}	
+					{% if status.s > 0 %} bgcolor='#fff3cd'{% endif %}	
+					{% if status.s == -1 %} bgcolor='#f8d7da'{% endif %}	
+			      	>
+			      	{{ status.s}}</td>
+			      {% endfor %}	
+
+			    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	
+	</div>
+
+
+
+
+
+			<div>
+				<a class="btn btn-primary" href="{% url 'booking' hotel.slug %}" role="button">Забронировать номер</a>
+			</div>
+
+
+
+{% endblock %}
+
