@@ -1,0 +1,12 @@
+# Distribution, packaging
+bin/*
+db/*
+env/*
+logs/*
+media/*
+run/*
+src/hotel/hotel/settings/local.py
+
+*.pyc
+*~
+__pycache__/
