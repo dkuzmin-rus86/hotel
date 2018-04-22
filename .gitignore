@@ -10,3 +10,6 @@ src/hotel/hotel/settings/local.py
 *.pyc
 *~
 __pycache__/
+
+# don't ignore keep files
+!.keep
